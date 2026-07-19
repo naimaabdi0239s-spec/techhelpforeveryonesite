@@ -469,7 +469,7 @@ function Footer() {
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 text-[13.5px]" style={{ color: NAVY }}>
-          <a href="mailto:hello@techsupportforeveryone.com" className="inline-flex items-center gap-2 hover:opacity-70">
+          <a href="mailto:Techsupportforeveryone@gmail.com" className="inline-flex items-center gap-2 hover:opacity-70">
             <Mail className="w-4 h-4" style={{ color: BLUE }} /> Techsupportforeveryone@gmail.com
           </a>
           <a href="https://instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:opacity-70">
