@@ -65,7 +65,7 @@ function PrimaryBtn({ children, ...p }: React.ButtonHTMLAttributes<HTMLButtonEle
   return (
     <button
       {...p}
-      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,0,0,0.55)] transition-transform hover:-translate-y-0.5"
+      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,0,0,0.55)] transition-transform hover:-trans[...]"
       style={{ background: RED }}
     >
       {children}
@@ -272,7 +272,7 @@ function Pricing() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
           eyebrow="Pricing & Availability"
-          title="Suggested contributions — never required."
+          title="black space(get riid of it)"
           sub="Pay what feels fair for the help you got. If money is tight, we'll figure it out."
         />
         <div className="mt-8 grid md:grid-cols-2 gap-4">
