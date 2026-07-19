@@ -11,12 +11,12 @@ import {
   Sparkles,
   Instagram,
   Mail,
-  Phone,
   ArrowRight,
   MapPin,
   Star,
 } from "lucide-react";
-import { Globe } from "@/components/Globe";
+import heroVideo from "@/assets/hero.mp4.asset.json";
+import aboutPhoto from "@/assets/about.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -168,10 +168,16 @@ function Hero() {
         </div>
 
         <div className="relative">
-          <Globe />
-          <p className="mt-3 text-center text-xs uppercase tracking-[0.18em]" style={{ color: `${NAVY}99` }}>
-            Drag to spin · moves with you
-          </p>
+          <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_-20px_rgba(11,31,58,0.35)] border border-[color:var(--border)]">
+            <video
+              src={heroVideo.url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover aspect-[4/3]"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -221,12 +227,11 @@ function About() {
     <section id="about" className="py-16 md:py-20 bg-white/60">
       <div className="mx-auto max-w-6xl px-5 grid md:grid-cols-2 gap-10 items-center">
         <div className="relative">
-          <div
-            className="aspect-[4/5] w-full rounded-2xl border-2 border-dashed flex items-center justify-center text-sm font-medium"
-            style={{ borderColor: `${NAVY}30`, background: "#fff", color: `${NAVY}80` }}
-          >
-            Your photo here
-          </div>
+          <img
+            src={aboutPhoto.url}
+            alt="Friendly, patient tech help — a student helping a neighbor with a laptop"
+            className="aspect-[4/5] w-full rounded-2xl object-cover shadow-[0_20px_50px_-20px_rgba(11,31,58,0.35)]"
+          />
           <div className="absolute -bottom-4 -right-4 rounded-xl px-4 py-2 text-xs font-semibold text-white shadow-lg" style={{ background: NAVY }}>
             Based in Silver Spring, MD
           </div>
@@ -273,13 +278,15 @@ function Pricing() {
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
             <div className="text-xs font-semibold tracking-[0.16em] uppercase" style={{ color: BLUE }}>Remote</div>
-            <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$10–$30<span className="text-base font-normal opacity-70">/hr</span></div>
+            <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$10 to $30<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Screen-share from anywhere in the US. Perfect for setup, installs, and quick fixes.</p>
+            <div className="mt-5"><PrimaryBtn>Book remote session <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
           </div>
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
             <div className="text-xs font-semibold tracking-[0.16em] uppercase" style={{ color: BLUE }}>In-person</div>
-            <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$25–$50<span className="text-base font-normal opacity-70">/hr</span></div>
+            <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$25 to $50<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Around Silver Spring, MD. I come to you with everything I need.</p>
+            <div className="mt-5"><PrimaryBtn>Book in-person visit <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
           </div>
         </div>
 
@@ -288,7 +295,7 @@ function Pricing() {
           <div className="grid md:grid-cols-3 gap-4 text-[14px]" style={{ color: NAVY }}>
             <div><div className="font-semibold">Weekdays · In-person</div><div className="opacity-75">After 5:00 PM</div></div>
             <div><div className="font-semibold">Weekdays · Remote</div><div className="opacity-75">After 4:00 PM</div></div>
-            <div><div className="font-semibold">Weekends · Both</div><div className="opacity-75">9:00 AM – 7:00 PM</div></div>
+            <div><div className="font-semibold">Weekends · Both</div><div className="opacity-75">9:00 AM to 7:00 PM</div></div>
           </div>
         </div>
       </div>
@@ -361,18 +368,8 @@ function Testimonials() {
           <SectionTitle
             eyebrow="Testimonials"
             title="Real notes from real neighbors."
-            sub="Reviews will appear here as clients leave them."
+            sub="Be the first to share your experience using the form."
           />
-          <div className="mt-6 space-y-3">
-            {[1,2].map((i)=>(
-              <div key={i} className="rounded-2xl border-2 border-dashed p-5 bg-white/70" style={{ borderColor: `${NAVY}25` }}>
-                <div className="flex gap-1 mb-2">
-                  {[0,1,2,3,4].map((s)=>(<Star key={s} className="w-3.5 h-3.5 fill-current" style={{ color: `${NAVY}30` }} />))}
-                </div>
-                <div className="text-sm" style={{ color: `${NAVY}70` }}>Client testimonial will appear here.</div>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
@@ -441,7 +438,7 @@ function FinalCTA() {
           />
           <div className="relative">
             <h2 className="text-3xl md:text-5xl font-semibold text-white leading-tight max-w-2xl mx-auto">
-              Let's fix whatever's driving you nuts.
+              Let's fix your problems with ease.
             </h2>
             <p className="mt-3 text-white/75 max-w-md mx-auto text-[15px]">
               Send a message today — usually a response within a few hours.
@@ -473,10 +470,7 @@ function Footer() {
         </div>
         <div className="flex flex-col sm:flex-row gap-4 text-[13.5px]" style={{ color: NAVY }}>
           <a href="mailto:hello@techsupportforeveryone.com" className="inline-flex items-center gap-2 hover:opacity-70">
-            <Mail className="w-4 h-4" style={{ color: BLUE }} /> hello@techsupportforeveryone.com
-          </a>
-          <a href="tel:+12401234567" className="inline-flex items-center gap-2 hover:opacity-70">
-            <Phone className="w-4 h-4" style={{ color: BLUE }} /> (240) 123-4567
+            <Mail className="w-4 h-4" style={{ color: BLUE }} /> Techsupportforeveryone@gmail.com
           </a>
           <a href="https://instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:opacity-70">
             <Instagram className="w-4 h-4" style={{ color: BLUE }} /> @techsupportforeveryone
