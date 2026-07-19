@@ -272,7 +272,7 @@ function Pricing() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
           eyebrow="Pricing & Availability"
-          title="black space(get riid of it)"
+          title=""
           sub="Pay what feels fair for the help you got. If money is tight, we'll figure it out."
         />
         <div className="mt-8 grid md:grid-cols-2 gap-4">
