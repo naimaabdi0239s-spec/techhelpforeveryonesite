@@ -155,7 +155,7 @@ function Hero() {
             person — usually the same day.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="#request"><PrimaryBtn>Book Support <ArrowRight className="w-4 h-4" /></PrimaryBtn></a>
+            <a href="https://calendar.app.google/sYd3joXhKbN73kVy8"><PrimaryBtn>Book Support <ArrowRight className="w-4 h-4" /></PrimaryBtn></a>
             <a href="#ask"><SecondaryBtn>Ask a question first</SecondaryBtn></a>
           </div>
           <div className="mt-6 flex items-center gap-4 text-[13px]" style={{ color: NAVY }}>
