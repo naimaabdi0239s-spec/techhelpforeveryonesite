@@ -22,14 +22,15 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAVY = "#000080";
-const BLUE = "#0000A8";
+const NAVY = "#0000A8";
+const BLUE = "#08AECC";
 const RED = "#FF0000";
+const NAVY_DARK = "#000080";
 
 function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <div className="relative w-9 h-9 rounded-full flex items-center justify-center" style={{ background: NAVY }}>
+      <div className="relative w-9 h-9 rounded-full flex items-center justify-center" style={{ background: NAVY_DARK }}>
         <svg viewBox="0 0 40 40" className="w-6 h-6">
           <circle cx="20" cy="20" r="14" fill="none" stroke={BLUE} strokeWidth="1.5" />
           <ellipse cx="20" cy="20" rx="6" ry="14" fill="none" stroke={BLUE} strokeWidth="1.2" />
@@ -65,7 +66,7 @@ function PrimaryBtn({ children, ...p }: React.ButtonHTMLAttributes<HTMLButtonEle
   return (
     <button
       {...p}
-      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,0,0,0.55)] transition-transform hover:-trans[...]"
+      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,0,0,0.55)] transition-transform hover:-trans[...]
       style={{ background: RED }}
     >
       {children}
@@ -97,7 +98,7 @@ function SectionTitle({
   return (
     <div className="max-w-2xl">
       {eyebrow && (
-        <div className="text-[16px] font-semibold tracking-[0.16em] uppercase mb-2" style={{ color: BLUE }}>
+        <div className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-2" style={{ color: BLUE }}>
           {eyebrow}
         </div>
       )}
@@ -239,7 +240,7 @@ function About() {
         <div>
           <SectionTitle
             eyebrow="About"
-            title="The tech person my family, friends, and neighbors have relied on for years."
+            title="A student who's been the family tech-person since middle school."
           />
           <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--muted-foreground)]">
             I started Tech Support for Everyone because good tech help
@@ -253,7 +254,6 @@ function About() {
               "Clear communication — no jargon, no upsells",
               "Remote nationwide + in-person around Silver Spring",
               "Suggested-contribution pricing that's actually fair",
-              "No charge if I can't fix the issue",
             ].map((t) => (
               <li key={t} className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 mt-0.5" style={{ color: BLUE }} />
@@ -272,8 +272,9 @@ function Pricing() {
     <section id="pricing" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
-          eyebrow="Pricing"
-          title="Pricing & Availability"
+          eyebrow="Pricing & Availability"
+          title=""
+          sub="Pay what feels fair for the help you got. If money is tight, we'll figure it out."
         />
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
@@ -367,7 +368,7 @@ function Testimonials() {
         <div>
           <SectionTitle
             eyebrow="Testimonials"
-            title="Real feedback from real customers."
+            title="Real notes from real neighbors."
             sub="Be the first to share your experience using the form."
           />
         </div>
@@ -444,7 +445,7 @@ function FinalCTA() {
               Send a message today — usually a response within a few hours.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 justify-center">
-              <PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+              <PrimaryBtn>Request support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
               <a href="#ask">
                 <button className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white border border-white/30 hover:bg-white/10">
                   Ask a question <MessageCircle className="w-4 h-4" />
