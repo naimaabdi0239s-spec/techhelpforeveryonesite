@@ -27,6 +27,9 @@ const BLUE = "#08AECC";
 const RED = "#FF0000";
 const NAVY_DARK = "#000080";
 
+// Single source of truth for the booking link — update once here if it ever changes.
+const BOOKING_URL = "https://calendar.app.google/sYd3joXhKbN73kVy8";
+
 function Logo() {
   return (
     <div className="flex items-center gap-2">
@@ -122,7 +125,9 @@ function Nav() {
           <a href="#how" className="hover:opacity-70">How it works</a>
         </nav>
         <a
-          href="#https://calendar.app.google/sYd3joXhKbN73kVy8"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full px-4 py-2 text-sm font-semibold text-white"
           style={{ background: RED }}
         >
@@ -155,7 +160,9 @@ function Hero() {
             person — usually the same day.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="https://calendar.app.google/sYd3joXhKbN73kVy8"><PrimaryBtn>Book Support <ArrowRight className="w-4 h-4" /></PrimaryBtn></a>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <PrimaryBtn>Book Support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+            </a>
             <a href="#ask"><SecondaryBtn>Ask a question first</SecondaryBtn></a>
           </div>
           <div className="mt-6 flex items-center gap-4 text-[13px]" style={{ color: NAVY }}>
@@ -281,26 +288,33 @@ function Pricing() {
             <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>Remote</div>
             <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$10 to $30<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Screen-share from anywhere in the US. Perfect for setup, installs, and quick fixes.</p>
-           
-   <div className="mt-5">
-  <a
-    href="https://calendar.app.google/sYd3joXhKbN73kVy8"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <PrimaryBtn>
-      Book remote session <ArrowRight className="w-4 h-4" />
-    </PrimaryBtn>
-  </a>
-</div>
+            <div className="mt-5">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PrimaryBtn>
+                  Book remote session <ArrowRight className="w-4 h-4" />
+                </PrimaryBtn>
+              </a>
+            </div>
+          </div>
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
             <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>In-person</div>
             <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$25 to $50<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Around Silver Spring, MD. I come to you with everything I need.</p>
-           <a
-    href="https://calendar.app.google/sYd3joXhKbN73kVy8"
-    target="_blank"
-    rel="noopener noreferrer">  <div className="mt-5"><PrimaryBtn>Book in-person visit <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
+            <div className="mt-5">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PrimaryBtn>
+                  Book in-person visit <ArrowRight className="w-4 h-4" />
+                </PrimaryBtn>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -354,7 +368,11 @@ function TwoPath() {
           <div className="text-xs tracking-widest uppercase mb-3" style={{ color: BLUE }}>Ready to go</div>
           <h3 className="text-2xl font-semibold">I know what I need.</h3>
           <p className="mt-2 text-[14.5px] opacity-80 max-w-sm">Skip the back-and-forth. Book a session and let's get it fixed.</p>
-          <div className="mt-5"><PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
+          <div className="mt-5">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+            </a>
+          </div>
         </div>
         <div id="ask" className="rounded-2xl p-8 bg-white border border-[color:var(--border)]">
           <div className="text-xs tracking-widest uppercase mb-3" style={{ color: BLUE }}>Not sure yet</div>
@@ -458,7 +476,9 @@ function FinalCTA() {
               Send a message today — usually a response within a few hours.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 justify-center">
-              <PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+              </a>
               <a href="#ask">
                 <button className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white border border-white/30 hover:bg-white/10">
                   Ask a question <MessageCircle className="w-4 h-4" />
