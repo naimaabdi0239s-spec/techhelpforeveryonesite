@@ -115,7 +115,7 @@ function Nav() {
     <header className="sticky top-0 z-30 backdrop-blur bg-[#eef6ff]/80 border-b border-[color:var(--border)]">
       <div className="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
         <Logo />
-        <nav className="hidden md:flex items-center gap-7 text-base" style={{ color: NAVY }}>
+        <nav className="hidden md:flex items-center gap-7 text-sm" style={{ color: NAVY }}>
           <a href="#services" className="hover:opacity-70">Services</a>
           <a href="#about" className="hover:opacity-70">About</a>
           <a href="#pricing" className="hover:opacity-70">Pricing</a>
