@@ -66,7 +66,7 @@ function PrimaryBtn({ children, ...p }: React.ButtonHTMLAttributes<HTMLButtonEle
   return (
     <button
       {...p}
-      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,0,0,0.55)] transition-transform hover:-trans[...]
+      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,0,0,0.55)] transition-transform hover:scale-105"
       style={{ background: RED }}
     >
       {children}
@@ -98,7 +98,7 @@ function SectionTitle({
   return (
     <div className="max-w-2xl">
       {eyebrow && (
-        <div className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-2" style={{ color: BLUE }}>
+        <div className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: BLUE }}>
           {eyebrow}
         </div>
       )}
@@ -240,7 +240,7 @@ function About() {
         <div>
           <SectionTitle
             eyebrow="About"
-            title="A student who's been the family tech-person since middle school."
+            title="The tech person my family, friends, and neighbors have relied on for years."
           />
           <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--muted-foreground)]">
             I started Tech Support for Everyone because good tech help
@@ -254,6 +254,7 @@ function About() {
               "Clear communication — no jargon, no upsells",
               "Remote nationwide + in-person around Silver Spring",
               "Suggested-contribution pricing that's actually fair",
+              "No charge if I can't fix the issue",
             ].map((t) => (
               <li key={t} className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 mt-0.5" style={{ color: BLUE }} />
@@ -272,19 +273,18 @@ function Pricing() {
     <section id="pricing" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
-          eyebrow="Pricing & Availability"
-          title=""
-          sub="Pay what feels fair for the help you got. If money is tight, we'll figure it out."
+          eyebrow="Pricing"
+          title="Pricing & Availability"
         />
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
-            <div className="text-xs font-semibold tracking-[0.16em] uppercase" style={{ color: BLUE }}>Remote</div>
+            <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>Remote</div>
             <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$10 to $30<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Screen-share from anywhere in the US. Perfect for setup, installs, and quick fixes.</p>
             <div className="mt-5"><PrimaryBtn>Book remote session <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
           </div>
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
-            <div className="text-xs font-semibold tracking-[0.16em] uppercase" style={{ color: BLUE }}>In-person</div>
+            <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>In-person</div>
             <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$25 to $50<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Around Silver Spring, MD. I come to you with everything I need.</p>
             <div className="mt-5"><PrimaryBtn>Book in-person visit <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
@@ -292,7 +292,7 @@ function Pricing() {
         </div>
 
         <div className="mt-6 rounded-2xl border border-[color:var(--border)] bg-white p-6">
-          <div className="text-xs font-semibold tracking-[0.16em] uppercase mb-4" style={{ color: BLUE }}>Availability</div>
+          <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: BLUE }}>Availability</div>
           <div className="grid md:grid-cols-3 gap-4 text-[14px]" style={{ color: NAVY }}>
             <div><div className="font-semibold">Weekdays · In-person</div><div className="opacity-75">After 5:00 PM</div></div>
             <div><div className="font-semibold">Weekdays · Remote</div><div className="opacity-75">After 4:00 PM</div></div>
@@ -338,13 +338,13 @@ function TwoPath() {
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5 grid md:grid-cols-2 gap-4">
         <div id="request" className="rounded-2xl p-8 text-white" style={{ background: NAVY }}>
-          <div className="text-xs tracking-[0.16em] uppercase mb-3" style={{ color: BLUE }}>Ready to go</div>
+          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: BLUE }}>Ready to go</div>
           <h3 className="text-2xl font-semibold">I know what I need.</h3>
           <p className="mt-2 text-[14.5px] opacity-80 max-w-sm">Skip the back-and-forth. Book a session and let's get it fixed.</p>
           <div className="mt-5"><PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
         </div>
         <div id="ask" className="rounded-2xl p-8 bg-white border border-[color:var(--border)]">
-          <div className="text-xs tracking-[0.16em] uppercase mb-3" style={{ color: BLUE }}>Not sure yet</div>
+          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: BLUE }}>Not sure yet</div>
           <h3 className="text-2xl font-semibold" style={{ color: NAVY }}>I have a question first.</h3>
           <p className="mt-2 text-[14.5px] max-w-sm text-[color:var(--muted-foreground)]">
             Tell me what's happening and I'll let you know if I can help — no pressure, no bill.
@@ -368,13 +368,13 @@ function Testimonials() {
         <div>
           <SectionTitle
             eyebrow="Testimonials"
-            title="Real notes from real neighbors."
+            title="Real feedback from real customers."
             sub="Be the first to share your experience using the form."
           />
         </div>
 
         <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
-          <div className="text-xs font-semibold tracking-[0.16em] uppercase mb-1" style={{ color: BLUE }}>Leave a review</div>
+          <div className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: BLUE }}>Leave a review</div>
           <h3 className="text-xl font-semibold" style={{ color: NAVY }}>Share your experience</h3>
           {sent ? (
             <div className="mt-6 rounded-xl p-4 text-sm" style={{ background: `${BLUE}15`, color: NAVY }}>
@@ -445,7 +445,7 @@ function FinalCTA() {
               Send a message today — usually a response within a few hours.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 justify-center">
-              <PrimaryBtn>Request support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+              <PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
               <a href="#ask">
                 <button className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white border border-white/30 hover:bg-white/10">
                   Ask a question <MessageCircle className="w-4 h-4" />
