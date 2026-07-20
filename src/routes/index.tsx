@@ -273,7 +273,6 @@ function Pricing() {
         <SectionTitle
           eyebrow="Pricing & Availability"
           title=""
-          sub="Pay what feels fair for the help you got. If money is tight, we'll figure it out."
         />
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
