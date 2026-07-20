@@ -122,7 +122,7 @@ function Nav() {
           <a href="#how" className="hover:opacity-70">How it works</a>
         </nav>
         <a
-          href="#request"
+          href="#https://calendar.app.google/sYd3joXhKbN73kVy8"
           className="rounded-full px-4 py-2 text-sm font-semibold text-white"
           style={{ background: RED }}
         >
@@ -281,13 +281,26 @@ function Pricing() {
             <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>Remote</div>
             <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$10 to $30<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Screen-share from anywhere in the US. Perfect for setup, installs, and quick fixes.</p>
-            <div className="mt-5"><PrimaryBtn>Book remote session <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
-          </div>
+           
+   <div className="mt-5">
+  <a
+    href="https://calendar.app.google/sYd3joXhKbN73kVy8"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <PrimaryBtn>
+      Book remote session <ArrowRight className="w-4 h-4" />
+    </PrimaryBtn>
+  </a>
+</div>
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
             <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>In-person</div>
             <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$25 to $50<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Around Silver Spring, MD. I come to you with everything I need.</p>
-            <div className="mt-5"><PrimaryBtn>Book in-person visit <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
+           <a
+    href="https://calendar.app.google/sYd3joXhKbN73kVy8"
+    target="_blank"
+    rel="noopener noreferrer">  <div className="mt-5"><PrimaryBtn>Book in-person visit <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
           </div>
         </div>
 
