@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAVY = "#0000A8";
+const NAVY = "#000080";
 const BLUE = "#08AECC";
 const RED = "#FF0000";
 const NAVY_DARK = "#000080";
