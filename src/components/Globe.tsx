@@ -87,7 +87,7 @@ export function Globe() {
         className="absolute inset-6 rounded-full blur-3xl opacity-40"
         style={{
           background:
-            "radial-gradient(circle at 50% 50%, #08aecc 0%, transparent 65%)",
+            "radial-gradient(circle at 50% 50%, #0000a8 0%, transparent 65%)",
         }}
       />
       {/* Accent outer ring */}
@@ -95,7 +95,7 @@ export function Globe() {
         className="absolute inset-0 rounded-full"
         style={{
           boxShadow:
-            "0 0 0 1px rgba(8,174,204,0.35), 0 0 60px rgba(8,174,204,0.35)",
+            "0 0 0 1px rgba(0,0,168,0.35), 0 0 60px rgba(0,0,168,0.35)",
         }}
       />
 
@@ -122,8 +122,8 @@ export function Globe() {
               <stop offset="100%" stopColor="#d6e8f7" />
             </radialGradient>
             <radialGradient id="node" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#08aecc" />
-              <stop offset="100%" stopColor="#08aecc" stopOpacity="0" />
+              <stop offset="0%" stopColor="#0000a8" />
+              <stop offset="100%" stopColor="#0000a8" stopOpacity="0" />
             </radialGradient>
           </defs>
 
@@ -177,7 +177,7 @@ export function Globe() {
                     repeatCount="indefinite"
                   />
                 </circle>
-                <circle cx={x} cy={y} r="1.6" fill="#08aecc" />
+                <circle cx={x} cy={y} r="1.6" fill="#0000a8" />
               </g>
             );
           })}
@@ -187,7 +187,7 @@ export function Globe() {
       {/* Orbiting cursor pointer (outside 3D transform so it stays crisp) */}
       <div className="absolute inset-0 pointer-events-none animate-[spin_14s_linear_infinite]">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
-          <div className="w-8 h-8 rounded-full bg-white shadow-lg border border-[#08aecc]/40 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white shadow-lg border border-[#0000a8]/40 flex items-center justify-center">
             <svg viewBox="0 0 24 24" className="w-4 h-4" fill="#0b1f3a">
               <path d="M4 2l6 18 2.5-7L20 10 4 2z" />
             </svg>

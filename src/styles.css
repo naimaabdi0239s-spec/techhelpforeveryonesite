@@ -8,7 +8,7 @@
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --color-navy: #0b1f3a;
-  --color-brand-blue: #08aecc;
+  --color-brand-blue: #0000a8;
   --color-cta: #ff0000;
   --color-sky: #eef6ff;
 }
@@ -84,13 +84,13 @@
   --secondary-foreground: #0b1f3a;
   --muted: #eef6ff;
   --muted-foreground: #4a5b73;
-  --accent: #08aecc;
+  --accent: #0000a8;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: #d9e6f5;
   --input: #d9e6f5;
-  --ring: #08aecc;
+  --ring: #0000a8;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
