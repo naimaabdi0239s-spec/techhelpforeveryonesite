@@ -98,7 +98,7 @@ function SectionTitle({
   return (
     <div className="max-w-2xl">
       {eyebrow && (
-        <div className="text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: BLUE }}>
+        <div className="text-base font-semibold tracking-widest uppercase mb-2" style={{ color: BLUE }}>
           {eyebrow}
         </div>
       )}
