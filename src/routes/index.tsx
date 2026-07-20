@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
 });
 
 const NAVY = "#000080";
-const BLUE = "#08AECC";
+const BLUE = "#0000A8";
 const RED = "#FF0000";
 
 function Logo() {
@@ -38,7 +38,7 @@ function Logo() {
         </svg>
       </div>
       <div className="leading-tight">
-        <div className="font-display font-semibold text-[15px]" style={{ color: NAVY }}>
+        <div className="font-display font-semibold text-[15px]" style={{ color: RED }}>
           Tech Support
         </div>
         <div className="text-[11px] tracking-wide" style={{ color: BLUE }}>
@@ -97,7 +97,7 @@ function SectionTitle({
   return (
     <div className="max-w-2xl">
       {eyebrow && (
-        <div className="text-[13px] font-semibold tracking-[0.16em] uppercase mb-2" style={{ color: BLUE }}>
+        <div className="text-[16px] font-semibold tracking-[0.16em] uppercase mb-2" style={{ color: BLUE }}>
           {eyebrow}
         </div>
       )}
