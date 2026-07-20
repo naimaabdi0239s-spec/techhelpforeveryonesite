@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const NAVY = "#0B1F3A";
+const NAVY = "#000080";
 const BLUE = "#08AECC";
 const RED = "#FF0000";
 
@@ -97,7 +97,7 @@ function SectionTitle({
   return (
     <div className="max-w-2xl">
       {eyebrow && (
-        <div className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-2" style={{ color: BLUE }}>
+        <div className="text-[13px] font-semibold tracking-[0.16em] uppercase mb-2" style={{ color: BLUE }}>
           {eyebrow}
         </div>
       )}
@@ -125,7 +125,7 @@ function Nav() {
           className="rounded-full px-4 py-2 text-sm font-semibold text-white"
           style={{ background: RED }}
         >
-          Request support
+          Book support
         </a>
       </div>
     </header>
@@ -154,7 +154,7 @@ function Hero() {
             person — usually the same day.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="#request"><PrimaryBtn>Request Support <ArrowRight className="w-4 h-4" /></PrimaryBtn></a>
+            <a href="#request"><PrimaryBtn>Book Support <ArrowRight className="w-4 h-4" /></PrimaryBtn></a>
             <a href="#ask"><SecondaryBtn>Ask a question first</SecondaryBtn></a>
           </div>
           <div className="mt-6 flex items-center gap-4 text-[13px]" style={{ color: NAVY }}>
@@ -239,7 +239,7 @@ function About() {
         <div>
           <SectionTitle
             eyebrow="About"
-            title="A student who's been the family tech-person since middle school."
+            title="The tech person my family, friends, and neighbors have relied on for years."
           />
           <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--muted-foreground)]">
             I started Tech Support for Everyone because good tech help
@@ -253,6 +253,7 @@ function About() {
               "Clear communication — no jargon, no upsells",
               "Remote nationwide + in-person around Silver Spring",
               "Suggested-contribution pricing that's actually fair",
+              "No charge if I can't fix the issue",
             ].map((t) => (
               <li key={t} className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 mt-0.5" style={{ color: BLUE }} />
@@ -271,8 +272,8 @@ function Pricing() {
     <section id="pricing" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
-          eyebrow="Pricing & Availability"
-          title=""
+          eyebrow="Pricing"
+          title="Pricing & Availability"
         />
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
@@ -339,7 +340,7 @@ function TwoPath() {
           <div className="text-xs tracking-[0.16em] uppercase mb-3" style={{ color: BLUE }}>Ready to go</div>
           <h3 className="text-2xl font-semibold">I know what I need.</h3>
           <p className="mt-2 text-[14.5px] opacity-80 max-w-sm">Skip the back-and-forth. Book a session and let's get it fixed.</p>
-          <div className="mt-5"><PrimaryBtn>Request support <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
+          <div className="mt-5"><PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn></div>
         </div>
         <div id="ask" className="rounded-2xl p-8 bg-white border border-[color:var(--border)]">
           <div className="text-xs tracking-[0.16em] uppercase mb-3" style={{ color: BLUE }}>Not sure yet</div>
@@ -366,7 +367,7 @@ function Testimonials() {
         <div>
           <SectionTitle
             eyebrow="Testimonials"
-            title="Real notes from real neighbors."
+            title="Real feedback from real customers."
             sub="Be the first to share your experience using the form."
           />
         </div>
@@ -443,7 +444,7 @@ function FinalCTA() {
               Send a message today — usually a response within a few hours.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 justify-center">
-              <PrimaryBtn>Request support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
+              <PrimaryBtn>Book support <ArrowRight className="w-4 h-4" /></PrimaryBtn>
               <a href="#ask">
                 <button className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white border border-white/30 hover:bg-white/10">
                   Ask a question <MessageCircle className="w-4 h-4" />
