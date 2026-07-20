@@ -337,7 +337,7 @@ function TwoPath() {
   return (
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5 grid md:grid-cols-2 gap-4">
-        <div id="request" className="rounded-2xl p-8 text-white" style={{ background: #0000A8 }}>
+        <div id="request" className="rounded-2xl p-8 text-white" style={{ background: "#0000A8" }}>
           <div className="text-xs tracking-widest uppercase mb-3" style={{ color: BLUE }}>Ready to go</div>
           <h3 className="text-2xl font-semibold">I know what I need.</h3>
           <p className="mt-2 text-[14.5px] opacity-80 max-w-sm">Skip the back-and-forth. Book a session and let's get it fixed.</p>
