@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Monitor,
   Wrench,
@@ -380,10 +381,90 @@ function TwoPath() {
           <p className="mt-2 text-[14.5px] max-w-sm text-[color:var(--muted-foreground)]">
             Tell me what's happening and I'll let you know if I can help — no pressure, no bill.
           </p>
-          <div className="mt-5"><SecondaryBtn>Ask a question <MessageCircle className="w-4 h-4" /></SecondaryBtn></div>
+          <AskForm />
         </div>
       </div>
     </section>
+  );
+}
+
+function AskForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
+  const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (sent) {
+    return (
+      <div className="mt-5 rounded-xl p-4 text-sm" style={{ background: `${BLUE}15`, color: NAVY }}>
+        Thanks, {name || "friend"}! I'll get back to you soon.
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="mt-5 space-y-3"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        if (website) { setSent(true); return; } // honeypot: silently accept
+        setSubmitting(true);
+        setError(null);
+        const { error } = await supabase.from("questions").insert({ name, email, message });
+        setSubmitting(false);
+        if (error) { setError("Something went wrong. Please try again."); return; }
+        setSent(true);
+      }}
+    >
+      <input
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+        aria-hidden="true"
+      />
+      <div>
+        <label className="text-xs font-medium" style={{ color: NAVY }}>Your name</label>
+        <input
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)]"
+          placeholder="Alex"
+        />
+      </div>
+      <div>
+        <label className="text-xs font-medium" style={{ color: NAVY }}>Email</label>
+        <input
+          required
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)]"
+          placeholder="you@example.com"
+        />
+      </div>
+      <div>
+        <label className="text-xs font-medium" style={{ color: NAVY }}>Your question</label>
+        <textarea
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={3}
+          className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)] resize-none"
+          placeholder="What's going on?"
+        />
+      </div>
+      {error && <div className="text-xs text-red-600">{error}</div>}
+      <PrimaryBtn type="submit" disabled={submitting}>
+        {submitting ? "Sending..." : "Send question"} <MessageCircle className="w-4 h-4" />
+      </PrimaryBtn>
+    </form>
   );
 }
 
@@ -392,6 +473,9 @@ function Testimonials() {
   const [text, setText] = useState("");
   const [stars, setStars] = useState(5);
   const [sent, setSent] = useState(false);
+  const [website, setWebsite] = useState(""); // honeypot
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <section className="py-16 md:py-20 bg-white/60">
@@ -414,11 +498,26 @@ function Testimonials() {
           ) : (
             <form
               className="mt-4 space-y-3"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
+                if (website) { setSent(true); return; } // honeypot: silently accept
+                setSubmitting(true);
+                setError(null);
+                const { error } = await supabase.from("reviews").insert({ name, rating: stars, message: text });
+                setSubmitting(false);
+                if (error) { setError("Something went wrong. Please try again."); return; }
                 setSent(true);
               }}
             >
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                aria-hidden="true"
+              />
               <div>
                 <label className="text-xs font-medium" style={{ color: NAVY }}>Your name</label>
                 <input
@@ -448,7 +547,8 @@ function Testimonials() {
                   placeholder="What did I help with? How did it go?"
                 />
               </div>
-              <PrimaryBtn type="submit">Submit review</PrimaryBtn>
+              {error && <div className="text-xs text-red-600">{error}</div>}
+              <PrimaryBtn type="submit" disabled={submitting}>{submitting ? "Sending..." : "Submit review"}</PrimaryBtn>
             </form>
           )}
         </div>
