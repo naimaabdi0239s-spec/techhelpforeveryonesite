@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Monitor,
@@ -473,84 +473,205 @@ function Testimonials() {
   const [text, setText] = useState("");
   const [stars, setStars] = useState(5);
   const [sent, setSent] = useState(false);
-  const [website, setWebsite] = useState(""); // honeypot
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [reviews, setReviews] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("id, name, rating, message, created_at")
+        .eq("approved", true)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error loading reviews:", error);
+        return;
+      }
+
+      setReviews(data || []);
+    };
+
+    fetchReviews();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!name.trim() || !text.trim()) {
+      return;
+    }
+
+    const { error } = await supabase
+      .from("reviews")
+      .insert({
+        name: name.trim(),
+        rating: stars,
+        message: text.trim(),
+      });
+
+    if (error) {
+      console.error("Error submitting review:", error);
+      return;
+    }
+
+    setSent(true);
+    setName("");
+    setText("");
+    setStars(5);
+  };
 
   return (
     <section className="py-16 md:py-20 bg-white/60">
-      <div className="mx-auto max-w-6xl px-5 grid md:grid-cols-2 gap-8 items-start">
-        <div>
-          <SectionTitle
-            eyebrow="Testimonials"
-            title="Real feedback from real customers."
-            sub="Be the first to share your experience using the form."
-          />
-        </div>
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <SectionTitle
+              eyebrow="Testimonials"
+              title="Real feedback from real customers."
+              sub="See what our customers have to say."
+            />
 
-        <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
-          <div className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: BLUE }}>Leave a review</div>
-          <h3 className="text-xl font-semibold" style={{ color: NAVY }}>Share your experience</h3>
-          {sent ? (
-            <div className="mt-6 rounded-xl p-4 text-sm" style={{ background: `${BLUE}15`, color: NAVY }}>
-              Thanks, {name || "friend"}! Your feedback means a lot.
-            </div>
-          ) : (
-            <form
-              className="mt-4 space-y-3"
-              onSubmit={async (e) => {
-                e.preventDefault();
-                if (website) { setSent(true); return; } // honeypot: silently accept
-                setSubmitting(true);
-                setError(null);
-                const { error } = await supabase.from("reviews").insert({ name, rating: stars, message: text });
-                setSubmitting(false);
-                if (error) { setError("Something went wrong. Please try again."); return; }
-                setSent(true);
-              }}
+            {reviews.length > 0 && (
+              <div className="mt-8 space-y-4">
+                {reviews.map((review) => (
+                  <div
+                    key={review.id}
+                    className="rounded-2xl bg-white p-5 border border-[color:var(--border)]"
+                  >
+                    <div className="flex gap-1 mb-3">
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <Star
+                          key={n}
+                          className={`w-4 h-4 ${
+                            n <= review.rating ? "fill-current" : ""
+                          }`}
+                          style={{
+                            color:
+                              n <= review.rating
+                                ? BLUE
+                                : `${NAVY}30`,
+                          }}
+                        />
+                      ))}
+                    </div>
+
+                    <p className="text-sm leading-relaxed" style={{ color: NAVY }}>
+                      "{review.message}"
+                    </p>
+
+                    <p
+                      className="mt-3 text-xs font-semibold"
+                      style={{ color: `${NAVY}80` }}
+                    >
+                      — {review.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
+            <div
+              className="text-xs font-semibold tracking-widest uppercase mb-1"
+              style={{ color: BLUE }}
             >
-              <input
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                value={website}
-                onChange={(e) => setWebsite(e.target.value)}
-                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
-                aria-hidden="true"
-              />
-              <div>
-                <label className="text-xs font-medium" style={{ color: NAVY }}>Your name</label>
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)]"
-                  placeholder="Alex from Silver Spring"
-                />
+              Leave a review
+            </div>
+
+            <h3 className="text-xl font-semibold" style={{ color: NAVY }}>
+              Share your experience
+            </h3>
+
+            {sent ? (
+              <div
+                className="mt-6 rounded-xl p-4 text-sm"
+                style={{
+                  background: `${BLUE}15`,
+                  color: NAVY,
+                }}
+              >
+                Thanks, {name || "friend"}! Your feedback has been submitted
+                for review.
               </div>
-              <div>
-                <label className="text-xs font-medium" style={{ color: NAVY }}>Rating</label>
-                <div className="mt-1 flex gap-1">
-                  {[1,2,3,4,5].map((n)=>(
-                    <button type="button" key={n} onClick={()=>setStars(n)} className="p-1">
-                      <Star className={`w-5 h-5 ${n<=stars?"fill-current":""}`} style={{ color: n<=stars? BLUE : `${NAVY}40` }} />
-                    </button>
-                  ))}
+            ) : (
+              <form
+                className="mt-4 space-y-3"
+                onSubmit={handleSubmit}
+              >
+                <div>
+                  <label
+                    className="text-xs font-medium"
+                    style={{ color: NAVY }}
+                  >
+                    Your name
+                  </label>
+
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)]"
+                    placeholder="Alex from Silver Spring"
+                  />
                 </div>
-              </div>
-              <div>
-                <label className="text-xs font-medium" style={{ color: NAVY }}>Your feedback</label>
-                <textarea
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                  rows={4}
-                  className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)] resize-none"
-                  placeholder="What did I help with? How did it go?"
-                />
-              </div>
-              {error && <div className="text-xs text-red-600">{error}</div>}
-              <PrimaryBtn type="submit" disabled={submitting}>{submitting ? "Sending..." : "Submit review"}</PrimaryBtn>
-            </form>
-          )}
+
+                <div>
+                  <label
+                    className="text-xs font-medium"
+                    style={{ color: NAVY }}
+                  >
+                    Rating
+                  </label>
+
+                  <div className="mt-1 flex gap-1">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <button
+                        type="button"
+                        key={n}
+                        onClick={() => setStars(n)}
+                        className="p-1"
+                      >
+                        <Star
+                          className={`w-5 h-5 ${
+                            n <= stars ? "fill-current" : ""
+                          }`}
+                          style={{
+                            color:
+                              n <= stars
+                                ? BLUE
+                                : `${NAVY}40`,
+                          }}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    className="text-xs font-medium"
+                    style={{ color: NAVY }}
+                  >
+                    Your feedback
+                  </label>
+
+                  <textarea
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    required
+                    rows={4}
+                    className="mt-1 w-full rounded-lg border border-[color:var(--border)] bg-white px-3 py-2 text-sm outline-none focus:border-[color:var(--accent)] resize-none"
+                    placeholder="What did I help with? How did it go?"
+                  />
+                </div>
+
+                <PrimaryBtn type="submit">
+                  Submit review
+                </PrimaryBtn>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>
