@@ -139,6 +139,7 @@ function Nav() {
   );
 }
 
+
 function Hero() {
   return (
     <section className="relative overflow-hidden">
