@@ -29,7 +29,7 @@ const RED = "#FF0000";
 const NAVY_DARK = "#000080";
 
 // Single source of truth for the booking link — update once here if it ever changes.
-const BOOKING_URL = "https://calendar.app.google/sYd3joXhKbN73kVy8";
+const BOOKING_URL = "https://calendar.app.google/VrgkJn6gyLkHuGZD8";
 
 function Logo() {
   return (
