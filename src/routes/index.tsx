@@ -195,10 +195,10 @@ function Hero() {
 }
 
 const services = [
-  { icon: Monitor, title: "Device Setup", body: "New laptop, phone, printer, or smart TV? I'll get it running the way you want." },
+  { icon: Monitor, title: "Device Setup", body: "New laptop, phone, tablet, or PC? I'll get it running the way you want." },
   { icon: Wrench, title: "Troubleshooting", body: "Slow computer, weird errors, Wi-Fi drops — I'll figure out what's actually wrong." },
-  { icon: ShieldCheck, title: "Malware Removal", body: "Pop-ups, sketchy tabs, or a suspicious email? Full clean-up and prevention." },
-  { icon: Download, title: "Software Installation", body: "Office, Zoom, printers, browsers, updates — installed properly and explained." },
+  { icon: ShieldCheck, title: "Social Media Setup", body: "Set up your social media profiles with ease." },
+  { icon: Download, title: "Software Installation", body: "Office, Zoom, apps, browsers, updates — installed properly and explained." },
 ];
 
 function Services() {
@@ -285,10 +285,11 @@ function Pricing() {
           eyebrow="Pricing"
           title="Pricing & Availability"
         />
+        <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">All contributions are suggested (and greatly appreciated).</p>
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)]">
             <div className="text-xs font-semibold tracking-widest uppercase" style={{ color: BLUE }}>Remote</div>
-            <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$10 to $30<span className="text-base font-normal opacity-70">/hr</span></div>
+            <div className="mt-1 text-3xl font-semibold" style={{ color: NAVY }}>$25<span className="text-base font-normal opacity-70">/hr</span></div>
             <p className="mt-2 text-[14px] text-[color:var(--muted-foreground)]">Screen-share from anywhere in the US. Perfect for setup, installs, and quick fixes.</p>
             <div className="mt-5">
               <a
@@ -325,7 +326,7 @@ function Pricing() {
           <div className="grid md:grid-cols-3 gap-4 text-[14px]" style={{ color: NAVY }}>
             <div><div className="font-semibold">Weekdays · In-person</div><div className="opacity-75">After 5:00 PM</div></div>
             <div><div className="font-semibold">Weekdays · Remote</div><div className="opacity-75">After 4:00 PM</div></div>
-            <div><div className="font-semibold">Weekends · Both</div><div className="opacity-75">9:00 AM to 7:00 PM</div></div>
+            <div><div className="font-semibold">Weekends · Both</div><div className="opacity-75">9:00 AM (Sat)/2:30 PM (Sun) to 8:30 PM</div></div>
           </div>
         </div>
       </div>
